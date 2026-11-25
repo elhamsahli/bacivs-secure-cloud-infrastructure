@@ -11,3 +11,10 @@ Establish a working Ubuntu Linux environment via Windows PowerShell (WSL) to pra
 
 ## Security Takeaway
 Understanding Linux permissions, exposed ports, and log files is essential before deploying cloud workloads or monitoring security events.
+### Local Container Environment (WSL 2 & Docker)
+
+Configured a local container runtime on **Windows 11** using **WSL 2 (Ubuntu)** integrated with **Docker Desktop** as the initial foundation before transitioning to **Oracle Cloud Infrastructure (OCI)**:
+
+- **WSL 2 & Docker Desktop Integration:** Enabled WSL 2 integration for Ubuntu in Docker Desktop and verified daemon connectivity from the Ubuntu terminal.
+- **Socket Permissions & Session Handling:** Added the Linux user to the `docker` group (`sudo usermod -aG docker $USER`) and restarted the WSL session (`wsl --shutdown`) so Docker CLI commands run without `sudo`.
+- **Container Verification & Volume Mounting:** Validated runtime functionality with `hello-world`, then deployed an `nginx:alpine` test container (`-p 8080:80`) with a local host directory (`~/bacivs-web`) mounted read-only (`:ro`) to `/usr/share/nginx/html` and verified HTTP responses via `curl`.
